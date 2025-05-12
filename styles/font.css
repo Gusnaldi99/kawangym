@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "FuturaExtraBlack";
+  src: url("../assets/fonts/futura-extra-black-font.ttf") format("truetype");
+}
+@font-face {
+  font-family: "FuturaHeavy";
+  src: url("../assets/fonts/futura-hv-bt-heavy-font.ttf") format("truetype");
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "FuturaExtraBlack", sans-serif;
+  font-size: 18px;
+}
+
+p,
+span,
+a,
+li,
+button {
+  font-family: "FuturaHeavy", sans-serif;
+}

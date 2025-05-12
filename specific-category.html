@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <title>Katalog Produk</title>
+    <!-- favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    <!-- icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      media="print"
+      onload="this.media='all'"
+    />
+
+    <!-- font -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      />
+    </noscript>
+
+    <!-- css -->
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link
+      rel="stylesheet"
+      href="styles/font.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link
+      rel="stylesheet"
+      href="styles/utils.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <script type="module" src="js/main.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-logo-container">
+          <img alt="Logo" src="./assets/images/logo.png" />
+        </div>
+
+        <button class="nav-toggle" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="nav-menu">
+          <li><a href="/index.html#about"> ABOUT US </a></li>
+          <li><a href="/index.html#category"> CATEGORY </a></li>
+          <li><a href="/index.html#projects"> PROJECTS </a></li>
+          <li><a href="/index.html#client"> CLIENT </a></li>
+          <li><a href="/index.html#brand"> BRANDS </a></li>
+          <li><a href="/index.html#contact"> CONTACT </a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="product-section">
+        <div class="product-categories">
+          <h2>PRODUCT CATEGORIES</h2>
+          <ul class="category-list">
+            <li><a href="#">STRENGTH</a></li>
+            <li><a href="#">CARDIO</a></li>
+            <li><a href="#">PACKAGES</a></li>
+            <li><a href="#">FREE WEIGHT</a></li>
+            <li><a href="#">FLOORING &amp; STORAGE</a></li>
+          </ul>
+        </div>
+
+        <div class="product-grid"></div>
+      </section>
+    </main>
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-content">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <img id="modalImage" src="" alt="Product" />
+        <div class="modal-content-info">
+          <h3 id="modalName"></h3>
+          <p id="modalPrice"></p>
+          <h3 id="deskripsi-title">Deskripsi</h3>
+          <p id="modalDimensi"></p>
+          <p id="modalBerat"></p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="left-footer-content">
+        <div class="item-left-footer">
+          <h4>About</h4>
+          <div>
+            <a href="/index.html#about"> About Kawan Gym Asia </a>
+            <a href="/index.html#category"> Category </a>
+            <a href="/index.html#projects"> Projects </a>
+            <a href="/index.html#client"> Client </a>
+            <a href="/index.html#brand"> Brands </a>
+            <a href="/index.html#contact"> Contact </a>
+            <a href="./specific-category.html"> Catalog </a>
+          </div>
+        </div>
+        <div class="item-left-footer">
+          <h4>Visit Us</h4>
+          <div>
+            <a
+              href="https://www.google.com/maps/place/PT.+KAWAN+GYM+ASIA/@-6.2690331,106.372809,12z/data=!4m10!1m2!2m1!1skomplek,+Jl.+Citra+Raya+Boulevard+ruko+Grand+Bulevard+U+No.01A%2F301,+Kabupaten+Tangerang,+Banten+15710!3m6!1s0x2e4207004c9b05eb:0xa40fb7f0697c7704!8m2!3d-6.2690331!4d106.5252443!15sCmVrb21wbGVrLCBKbC4gQ2l0cmEgUmF5YSBCb3VsZXZhcmQgcnVrbyBHcmFuZCBCdWxldmFyZCBVIE5vLjAxQS8zMDEsIEthYnVwYXRlbiBUYW5nZXJhbmcsIEJhbnRlbiAxNTcxMOABAA!16s%2Fg%2F11wwz2cktl?entry=ttu&g_ep=EgoyMDI1MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+            >
+              Alamat Kantor
+            </a>
+          </div>
+        </div>
+        <div class="item-left-footer">
+          <h4>Support</h4>
+          <div>
+            <a
+              href="https://api.whatsapp.com/send/?phone=%2B6281808344123&text&type=phone_number&app_absent=0"
+            >
+              Contact Support
+            </a>
+            <a
+              href="https://api.whatsapp.com/send/?phone=%2B6281808344123&text&type=phone_number&app_absent=0"
+            >
+              Contact Sales</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="right-footer-content">
+        <h4>Masukkan Email Anda untuk Mendapatkan Update Terbaru tentang Kita</h4>
+        <form
+          action="https://formsubmit.co/gaweanaldi99@gmail.com"
+          method="POST"
+        >
+          <input type="email" placeholder="Your Email" name="Email" />
+          <button>Submit</button>
+        </form>
+        <p>For more information, please contact us at</p>
+        <div class="footer-sosmed-1">
+          <div>
+            <i class="fa-solid fa-phone"></i> <span> +6281808344123 </span>
+          </div>
+          <!-- <div>
+            <i class="fa-solid fa-question"></i> <span> Tokopedia </span>
+          </div> -->
+        </div>
+        <div class="footer-sosmed-2">
+          <i class="fa-brands fa-whatsapp"></i>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-instagram"></i>s
+          <i class="fa-brands fa-youtube"></i>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
