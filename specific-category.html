@@ -1,192 +1,593 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    />
-
-    <title>Katalog Produk</title>
-    <!-- favicon -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="assets/favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="assets/favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="assets/favicon/favicon-16x16.png"
-    />
-    <link rel="manifest" href="assets/favicon/site.webmanifest" />
-    <!-- icon -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-      media="print"
-      onload="this.media='all'"
-    />
-
-    <!-- font -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
-      />
-    </noscript>
-
-    <!-- css -->
-    <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/reset.css" />
-    <link
-      rel="stylesheet"
-      href="styles/font.css"
-      media="print"
-      onload="this.media='all'"
-    />
-    <link
-      rel="stylesheet"
-      href="styles/utils.css"
-      media="print"
-      onload="this.media='all'"
-    />
-    <script type="module" src="js/main.js" defer></script>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="nav-logo-container">
-          <img alt="Logo" src="./assets/images/logo.png" />
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Katalog Produk Spesifik</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
+  <link rel="manifest" href="assets/favicon/site.webmanifest" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" />
+  </noscript>
+  <link rel="stylesheet" href="styles/reset.css" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="styles/font.css" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="styles/utils.css" media="print" onload="this.media='all'" />
+  <style>
+    /* Gaya untuk kategori dan dropdown */
+    .category-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .category-item-wrapper {
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .category-item {
+      color: black;
+      border-radius: 5px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s;
+    }
+    
+ 
+    
+    .category-item.active {
+      color: var(--color-blue);
+    }
+    
+    .dropdown-icon {
+      transition: transform 0.3s;
+    }
+    
+    .dropdown-icon.open {
+      transform: rotate(180deg);
+    }
+    
+    .brand-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 0 0 5px 5px;
+      z-index: 100;
+      display: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .brand-dropdown.show {
+      display: block;
+      min-width: 140px;
+    }
+    
+    .brand-item {
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+    
+    .brand-item:hover {
+      background-color: #f5f5f5;
+    }
+    
+    .brand-item.selected {
+      background-color: #e0f2fe;
+      font-weight: 600;
+    }
+ 
+    
+    .current-filter-info {
+      text-align: center;
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #f0f8ff;
+      border-radius: 5px;
+      color: #2c3e50;
+    }
+    
+    /* Media Query untuk Responsif */
+    @media screen and (max-width: 768px) {
+      .category-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .category-item-wrapper {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-logo-container">
+        <img alt="Logo" src="./assets/images/logo.png" />
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="/index.html#about"> ABOUT US </a></li>
+        <li><a href="/index.html#category"> CATEGORY </a></li>
+        <li><a href="/index.html#projects"> PROJECTS </a></li>
+        <li><a href="/index.html#client"> CLIENT </a></li>
+        <li><a href="/index.html#brand"> BRANDS </a></li>
+        <li><a href="/index.html#contact"> CONTACT </a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="product-section">
+      <div class="product-categories-container">
+        <h2 id="page-main-title">KATEGORI PRODUK</h2>
+        
+        <!-- Kategori dengan dropdown -->
+        <div class="category-container" id="category-container">
+          <!-- Category items will be inserted here by JavaScript -->
         </div>
-
-        <button class="nav-toggle" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
-
-        <ul class="nav-menu">
-          <li><a href="/index.html#about"> ABOUT US </a></li>
-          <li><a href="/index.html#category"> CATEGORY </a></li>
-          <li><a href="/index.html#projects"> PROJECTS </a></li>
-          <li><a href="/index.html#client"> CLIENT </a></li>
-          <li><a href="/index.html#brand"> BRANDS </a></li>
-          <li><a href="/index.html#contact"> CONTACT </a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section class="product-section">
-        <div class="product-categories">
-          <h2>PRODUCT CATEGORIES</h2>
-          <ul class="category-list">
-            <li><a href="#">STRENGTH</a></li>
-            <li><a href="#">CARDIO</a></li>
-            <li><a href="#">PACKAGES</a></li>
-            <li><a href="#">FREE WEIGHT</a></li>
-            <li><a href="#">FLOORING &amp; STORAGE</a></li>
-          </ul>
+        
+        
+      </div>
+      
+      <div class="product-grid" id="product-grid">
+        <!-- Product cards will be inserted here by JavaScript -->
+      </div>
+    </section>
+  </main>
+  
+  <!-- Modal Overlay -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">×</span>
+      <img id="modalImage" src="" alt="Product" />
+      <div class="modal-content-info">
+        <h3 id="modalName"></h3>
+        <p id="modalPrice"></p>
+        <h3 id="deskripsi-title">Deskripsi</h3>
+        <p id="modalDimensi"></p>
+        <p id="modalBerat"></p>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <div class="left-footer-content">
+      <div class="item-left-footer">
+        <h4>About</h4>
+        <div>
+          <a href="/index.html#about"> About Kawan Gym Asia </a>
+          <a href="/index.html#category"> Category </a>
+          <a href="/index.html#projects"> Projects </a>
+          <a href="/index.html#client"> Client </a>
+          <a href="/index.html#brand"> Brands </a>
+          <a href="/index.html#contact"> Contact </a>
+          <a href="./specific-category.html"> Catalog </a>
         </div>
-
-        <div class="product-grid"></div>
-      </section>
-    </main>
-    <div class="modal-overlay" id="modalOverlay">
-      <div class="modal-content">
-        <span class="modal-close" id="modalClose">&times;</span>
-        <img id="modalImage" src="" alt="Product" />
-        <div class="modal-content-info">
-          <h3 id="modalName"></h3>
-          <p id="modalPrice"></p>
-          <h3 id="deskripsi-title">Deskripsi</h3>
-          <p id="modalDimensi"></p>
-          <p id="modalBerat"></p>
+      </div>
+      <div class="item-left-footer">
+        <h4>Visit Us</h4>
+        <div>
+          <a href="https://www.google.com/maps/place/PT.+KAWAN+GYM+ASIA/@-6.2690331,106.372809,12z/data=!4m10!1m2!2m1!1skomplek,+Jl.+Citra+Raya+Boulevard+ruko+Grand+Bulevard+U+No.01A%2F301,+Kabupaten+Tangerang,+Banten+15710!3m6!1s0x2e4207004c9b05eb:0xa40fb7f0697c7704!8m2!3d-6.2690331!4d106.5252443!15sCmVrb21wbGVrLCBKbC4gQ2l0cmEgUmF5YSBCb3VsZXZhcmQgcnVrbyBHcmFuZCBCdWxldmFyZCBVIE5vLjAxQS8zMDEsIEthYnVwYXRlbiBUYW5nZXJhbmcsIEJhbnRlbiAxNTcxMOABAA!16s%2Fg%2F11wwz2cktl?entry=ttu&g_ep=EgoyMDI1MDQyMi4wIKXMDSoASAFQAw%3D%3D">
+            Alamat Kantor
+          </a>
+        </div>
+      </div>
+      <div class="item-left-footer">
+        <h4>Support</h4>
+        <div>
+          <a href="https://api.whatsapp.com/send/?phone=%2B6281808344123&text&type=phone_number&app_absent=0">
+            Contact Support
+          </a>
+          <a href="https://api.whatsapp.com/send/?phone=%2B6281808344123&text&type=phone_number&app_absent=0">
+            Contact Sales</a>
         </div>
       </div>
     </div>
+    <div class="right-footer-content">
+      <h4>Masukkan Email Anda untuk Mendapatkan Update Terbaru tentang Kita</h4>
+      <form action="https://formsubmit.co/gaweanaldi99@gmail.com" method="POST">
+        <input type="email" placeholder="Your Email" name="Email" />
+        <button>Submit</button>
+      </form>
+      <p>For more information, please contact us at</p>
+      <div class="footer-sosmed-1">
+        <div>
+          <i class="fa-solid fa-phone"></i> <span> +6281808344123 </span>
+        </div>
+      </div>
+      <div class="footer-sosmed-2">
+        <i class="fa-brands fa-whatsapp"></i>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-youtube"></i>
+      </div>
+    </div>
+  </footer>
 
-    <footer>
-      <div class="left-footer-content">
-        <div class="item-left-footer">
-          <h4>About</h4>
-          <div>
-            <a href="/index.html#about"> About Kawan Gym Asia </a>
-            <a href="/index.html#category"> Category </a>
-            <a href="/index.html#projects"> Projects </a>
-            <a href="/index.html#client"> Client </a>
-            <a href="/index.html#brand"> Brands </a>
-            <a href="/index.html#contact"> Contact </a>
-            <a href="./specific-category.html"> Catalog </a>
+  <script>
+    const productData = {
+      STRENGTH: [
+        {
+          image: "./assets/images/product/strength/hurricane/HURRICANE-HS01-SEATED-CHEST-PRESS.svg",
+          name: "HURRICANE HS01 SEATED CHEST PRESS",
+          berat: "Berat : 68kg / 149lb",
+          dimensi: "Dimensi: 1360(L)*1260(W)*1650mm(H)",
+          brand: "HURRICANE"
+        },
+        {
+          image: "./assets/images/product/strength/hurricane/HURRICANE-HS02-SEATED-ROW.svg",
+          name: "HURRICANE HS02 SEATED ROW",
+          berat: "Berat : 86kg / 189lb",
+          dimensi: "Dimensi: 1450(L)*1010(W)*1650mm(H)",
+          brand: "HURRICANE"
+        },
+        {
+          image: "./assets/images/product/strength/hurricane/HURRICANE-HS03-SHOULDER-PRESS.svg", 
+          name: "HURRICANE HS03 SHOULDER PRESS",
+          berat: "Berat : 86kg / 189lb",
+          dimensi: "Dimensi: 1600(L)*1430(W)*1650mm(H)",
+          brand: "DHZ" 
+        },
+        {
+          image: "./assets/images/product/strength/hurricane/HURRICANE-HS06-SEATED-LEG-CURL.svg", 
+          name: "HURRICANE HS06 SEATED LEG CURL",
+          berat: "Berat : 104kg / 228lb",
+          dimensi: "Dimensi: 1315(L)*970(W)*1650mm(H)",
+          brand: "TRUE" 
+        }
+      ],
+      CARDIO: [
+        {
+          image: "./assets/images/product/cardio/hurricane/HURRICANE-F6-ARTIS-RECUMBENT-BIKE.svg",
+          name: "HURRICANE F6 ARTIS RECUMBENT BIKE",
+          berat: "Berat : 72kg / 159lb",
+          dimensi: "Dimensi: 1770(L)*750(W)*1450(H)",
+          brand: "HURRICANE"
+        },
+        {
+          image: "./assets/images/product/cardio/hurricane/HURRICANE-F6-ARTIS-SPIN-BIKE.svg",
+          name: "HURRICANE F6 ARTIS SPIN BIKE",
+          berat: "Berat : 68kg / 149lb",
+          dimensi: "Dimensi: 1200(L)*580(W)*1550(H)",
+          brand: "TRUE"
+        },
+        {
+          image: "./assets/images/product/cardio/hurricane/HURRICANE-F6-ARTIS-STAIR-CLIMBER.svg",
+          name: "HURRICANE F6 ARTIS STAIR CLIMBER",
+          berat: "Berat : 108kg / 238lb",
+          dimensi: "Dimensi: 910(L)*1320(W)*1800(H)",
+          brand: "HURRICANE"
+        },
+        {
+          image: "./assets/images/product/cardio/hurricane/HURRICANE-F6-ARTIS-TREADMILL.svg",
+          name: "HURRICANE F6 ARTIS TREADMILL",
+          berat: "Berat : 108kg / 238lb",
+          dimensi: "Dimensi: 2200(L)*850(W)*1510(H)",
+          brand: "HURRICANE"
+        }
+      ],
+      PACKAGES: [ 
+        {
+          image: "./assets/images/product/packages/example_package.svg", 
+          name: "PACKAGE DEAL ALPHA",
+          berat: "Berat : N/A",
+          dimensi: "Dimensi: N/A",
+          brand: "DHZ"
+        }
+      ],
+      "FREE WEIGHT": [ 
+        {
+          image: "./assets/images/product/freeweight/example_dumbbell.svg", 
+          name: "DUMBBELL SET PRO",
+          berat: "Berat : Various",
+          dimensi: "Dimensi: Various",
+          brand: "TRUE"
+        }
+      ],
+      "FLOORING & STORAGE": [ 
+        {
+          image: "./assets/images/product/flooring/example_mat.svg", 
+          name: "GYM FLOORING TILES",
+          berat: "Berat : N/A",
+          dimensi: "Dimensi: Per tile",
+          brand: "HURRICANE"
+        }
+      ],
+    };
+
+    const availableBrands = ["ALL", "DHZ", "HURRICANE", "TRUE"];
+    
+    // Variabel untuk melacak status kategori dan brand yang aktif
+    let activeCategory = localStorage.getItem('selectedCategory') || 'STRENGTH';
+    let activeBrand = "ALL";
+    let activeDropdown = null;
+    
+    document.addEventListener("DOMContentLoaded", function() {
+      // Setup navigasi toggle
+      const toggle = document.querySelector(".nav-toggle");
+      const navMenu = document.querySelector(".nav-menu");
+      if (toggle && navMenu) {
+        toggle.addEventListener("click", () => {
+          navMenu.classList.toggle("active");
+        });
+      }
+      
+      // Setup kategori
+      initCategories();
+      
+      // Load produk berdasarkan kategori aktif
+      loadProducts(activeCategory, activeBrand);
+      
+      // Setup modal
+      setupModal();
+    });
+    
+    function initCategories() {
+      const categoryContainer = document.getElementById('category-container');
+      categoryContainer.innerHTML = '';
+      
+      // Membuat elemen kategori untuk setiap kategori yang tersedia
+      Object.keys(productData).forEach(category => {
+        // Periksa apakah kategori ini memiliki produk
+        if (productData[category] && productData[category].length > 0) {
+          // Buat daftar brand yang tersedia untuk kategori ini
+          const brandsInCategory = ['ALL'];
+          const uniqueBrands = new Set();
+          
+          productData[category].forEach(product => {
+            if (product.brand) uniqueBrands.add(product.brand);
+          });
+          
+          uniqueBrands.forEach(brand => brandsInCategory.push(brand));
+          
+          // Buat wrapper kategori
+          const categoryWrapper = document.createElement('div');
+          categoryWrapper.className = 'category-item-wrapper';
+          categoryWrapper.dataset.category = category;
+          
+          // Buat item kategori
+          const categoryItem = document.createElement('div');
+          categoryItem.className = `category-item ${category === activeCategory ? 'active' : ''}`;
+          categoryItem.innerHTML = `
+            ${category}
+            <i class="fas fa-chevron-down dropdown-icon ${category === activeCategory ? 'open' : ''}"></i>
+          `;
+          
+          // Buat dropdown brand untuk kategori ini
+          const brandDropdown = document.createElement('div');
+          brandDropdown.className = `brand-dropdown ${category === activeCategory ? 'show' : ''}`;
+          
+          // Tambahkan item brand ke dropdown
+          brandsInCategory.forEach(brand => {
+            const brandItem = document.createElement('div');
+            brandItem.className = `brand-item ${brand === activeBrand && category === activeCategory ? 'selected' : ''}`;
+            brandItem.textContent = brand === 'ALL' ? 'Semua Merek' : brand;
+            brandItem.dataset.brand = brand;
+            
+            // Event listener untuk item brand
+            brandItem.addEventListener('click', (e) => {
+              e.stopPropagation();
+              activeBrand = brand;
+              
+              // Update tampilan item brand yang dipilih
+              document.querySelectorAll('.brand-item').forEach(item => {
+                item.classList.remove('selected');
+              });
+              brandItem.classList.add('selected');
+              
+              // Load produk dengan filter brand yang dipilih
+              loadProducts(activeCategory, activeBrand);
+              
+              // Update info filter
+              updateFilterInfo();
+            });
+            
+            brandDropdown.appendChild(brandItem);
+          });
+          
+          // Event listener untuk item kategori
+          categoryItem.addEventListener('click', () => {
+            // Toggle dropdown
+            const wasActive = category === activeCategory;
+            
+            // Reset kategori aktif
+            document.querySelectorAll('.category-item').forEach(item => {
+              item.classList.remove('active');
+              item.querySelector('.dropdown-icon').classList.remove('open');
+            });
+            
+            // Tutup semua dropdown lain
+            document.querySelectorAll('.brand-dropdown').forEach(dropdown => {
+              dropdown.classList.remove('show');
+            });
+            
+            // Jika kategori ini sudah aktif dan dropdown terbuka, tutup saja
+            if (wasActive) {
+              // Toggle dropdown
+              brandDropdown.classList.toggle('show');
+              categoryItem.classList.toggle('active');
+              categoryItem.querySelector('.dropdown-icon').classList.toggle('open');
+            } else {
+              // Ubah kategori aktif dan buka dropdown
+              activeCategory = category;
+              activeBrand = "ALL";
+              categoryItem.classList.add('active');
+              categoryItem.querySelector('.dropdown-icon').classList.add('open');
+              brandDropdown.classList.add('show');
+              
+              // Update item brand yang dipilih
+              document.querySelectorAll('.brand-item').forEach(item => {
+                item.classList.remove('selected');
+              });
+              brandDropdown.querySelector('[data-brand="ALL"]').classList.add('selected');
+              
+              // Load produk berdasarkan kategori baru
+              loadProducts(activeCategory, activeBrand);
+              
+              // Update info filter
+              updateFilterInfo();
+              
+              // Simpan kategori yang dipilih di localStorage
+              localStorage.setItem('selectedCategory', activeCategory);
+            }
+          });
+          
+          // Tambahkan ke wrapper dan container
+          categoryWrapper.appendChild(categoryItem);
+          categoryWrapper.appendChild(brandDropdown);
+          categoryContainer.appendChild(categoryWrapper);
+        }
+      });
+      
+      // Update info filter
+      updateFilterInfo();
+      
+      // Tambahkan event listener untuk menutup dropdown saat mengklik di luar
+      document.addEventListener('click', (e) => {
+        const targetElement = e.target;
+        const isDropdown = targetElement.closest('.category-item-wrapper');
+        
+        if (!isDropdown) {
+          document.querySelectorAll('.brand-dropdown').forEach(dropdown => {
+            dropdown.classList.remove('show');
+          });
+          
+          document.querySelectorAll('.dropdown-icon').forEach(icon => {
+            icon.classList.remove('open');
+          });
+        }
+      });
+    }
+    
+    function loadProducts(category, brand = "ALL") {
+      const productGrid = document.getElementById('product-grid');
+      if (!productGrid) {
+        console.error("Elemen product-grid tidak ditemukan.");
+        return;
+      }
+      
+      productGrid.innerHTML = "";
+      
+      // Ambil produk dalam kategori
+      const productsInCategory = productData[category] || [];
+      let productsToDisplay = productsInCategory;
+      
+      if (brand !== "ALL") {
+        productsToDisplay = productsInCategory.filter(product => 
+          product.brand && product.brand.toUpperCase() === brand.toUpperCase()
+        );
+      }
+      
+      // Tampilkan pesan jika tidak ada produk
+      if (productsToDisplay.length === 0) {
+        const categoryNameDisplay = category || 'yang dipilih';
+        productGrid.innerHTML = `
+          <p style="grid-column: 1 / -1; text-align: center; padding: 20px;">
+            Tidak ada produk untuk kategori '${categoryNameDisplay}'${brand !== "ALL" ? ` dan merek '${brand}'` : ''}.
+          </p>
+        `;
+        return;
+      }
+      
+      // Tampilkan produk
+      productsToDisplay.forEach(product => {
+        const productCard = document.createElement("div");
+        productCard.className = "product-card";
+        productCard.innerHTML = `
+          <img src="${product.image || './assets/images/placeholder.png'}" 
+               alt="${product.name || 'Nama Produk'}" 
+               onerror="this.onerror=null;this.src='./assets/images/placeholder.png';">
+          <div class="product-info">
+            <h3>${product.name || 'Nama Produk'}</h3>
           </div>
-        </div>
-        <div class="item-left-footer">
-          <h4>Visit Us</h4>
-          <div>
-            <a
-              href="https://www.google.com/maps/place/PT.+KAWAN+GYM+ASIA/@-6.2690331,106.372809,12z/data=!4m10!1m2!2m1!1skomplek,+Jl.+Citra+Raya+Boulevard+ruko+Grand+Bulevard+U+No.01A%2F301,+Kabupaten+Tangerang,+Banten+15710!3m6!1s0x2e4207004c9b05eb:0xa40fb7f0697c7704!8m2!3d-6.2690331!4d106.5252443!15sCmVrb21wbGVrLCBKbC4gQ2l0cmEgUmF5YSBCb3VsZXZhcmQgcnVrbyBHcmFuZCBCdWxldmFyZCBVIE5vLjAxQS8zMDEsIEthYnVwYXRlbiBUYW5nZXJhbmcsIEJhbnRlbiAxNTcxMOABAA!16s%2Fg%2F11wwz2cktl?entry=ttu&g_ep=EgoyMDI1MDQyMi4wIKXMDSoASAFQAw%3D%3D"
-            >
-              Alamat Kantor
-            </a>
-          </div>
-        </div>
-        <div class="item-left-footer">
-          <h4>Support</h4>
-          <div>
-            <a
-              href="https://api.whatsapp.com/send/?phone=%2B6281808344123&text&type=phone_number&app_absent=0"
-            >
-              Contact Support
-            </a>
-            <a
-              href="https://api.whatsapp.com/send/?phone=%2B6281808344123&text&type=phone_number&app_absent=0"
-            >
-              Contact Sales</a
-            >
-          </div>
-        </div>
-      </div>
-      <div class="right-footer-content">
-        <h4>Masukkan Email Anda untuk Mendapatkan Update Terbaru tentang Kita</h4>
-        <form
-          action="https://formsubmit.co/gaweanaldi99@gmail.com"
-          method="POST"
-        >
-          <input type="email" placeholder="Your Email" name="Email" />
-          <button>Submit</button>
-        </form>
-        <p>For more information, please contact us at</p>
-        <div class="footer-sosmed-1">
-          <div>
-            <i class="fa-solid fa-phone"></i> <span> +6281808344123 </span>
-          </div>
-          <!-- <div>
-            <i class="fa-solid fa-question"></i> <span> Tokopedia </span>
-          </div> -->
-        </div>
-        <div class="footer-sosmed-2">
-          <i class="fa-brands fa-whatsapp"></i>
-          <i class="fa-brands fa-facebook"></i>
-          <i class="fa-brands fa-instagram"></i>s
-          <i class="fa-brands fa-youtube"></i>
-        </div>
-      </div>
-    </footer>
-  </body>
+        `;
+        
+        productCard.addEventListener("click", () => showModal(product));
+        productGrid.appendChild(productCard);
+      });
+    }
+    
+    function updateFilterInfo() {
+      const filterInfo = document.getElementById('current-filter-info');
+      if (filterInfo) {
+        let infoText = `Menampilkan produk kategori <strong>${activeCategory}</strong>`;
+        if (activeBrand !== "ALL") {
+          infoText += ` dari merek <strong>${activeBrand}</strong>`;
+        }
+        filterInfo.innerHTML = infoText;
+      }
+      
+      
+    }
+    
+    function showModal(product) {
+      const modal = document.getElementById("modalOverlay");
+      const modalImage = document.getElementById("modalImage");
+      const modalName = document.getElementById("modalName");
+      const modalPrice = document.getElementById("modalPrice");
+      const modalDimensi = document.getElementById("modalDimensi");
+      const modalBerat = document.getElementById("modalBerat");
+      
+      if (!modal || !modalImage || !modalName || !modalPrice || !modalDimensi || !modalBerat) {
+        console.error("Satu atau lebih elemen modal tidak ditemukan.");
+        return;
+      }
+      
+      modalImage.src = product.image || "./assets/images/placeholder.png";
+      modalImage.alt = product.name || 'Gambar Produk';
+      modalName.textContent = product.name || 'Nama Produk';
+      modalPrice.textContent = product.price || "Harga tidak tersedia";
+      modalDimensi.textContent = product.dimensi || "Dimensi tidak tersedia";
+      modalBerat.textContent = product.berat || "Berat tidak tersedia";
+      
+      modal.style.display = "flex";
+      requestAnimationFrame(() => {
+        modal.classList.add("show");
+      });
+    }
+    
+    function setupModal() {
+      const modalCloseButton = document.getElementById("modalClose");
+      const modalOverlay = document.getElementById("modalOverlay");
+      
+      if (modalCloseButton) {
+        modalCloseButton.addEventListener("click", hideModal);
+      }
+      
+      if (modalOverlay) {
+        modalOverlay.addEventListener("click", (e) => {
+          if (e.target.id === "modalOverlay") {
+            hideModal();
+          }
+        });
+      }
+    }
+    
+    function hideModal() {
+      const modal = document.getElementById("modalOverlay");
+      if (modal) {
+        modal.classList.remove("show");
+        setTimeout(() => {
+          modal.style.display = "none";
+        }, 300);
+      }
+    }
+  </script>
+</body>
 </html>
