@@ -1,93 +1,157 @@
+// const productData = {
+//   STRENGTH: [
+//     {
+//       image: "./assets/images/product/strength/hurricane/HURRICANE-HS01-SEATED-CHEST-PRESS.svg",
+//       image: "./assets/images/product/strength/hurricane/HURRICANE-HS01-SEATED-CHEST-PRESS.svg",
+//       name: "HURRICANE HS01 SEATED CHEST PRESS",
+//       berat: "Berat : 68kg / 149lb",
+//       dimensi: "Dimensi: 1360(L)*1260(W)*1650mm(H)",
+//       brand: "HURRICANE"
+//     },
+//     {
+//       image: "./assets/images/product/strength/hurricane/HURRICANE-HS02-SEATED-ROW.svg",
+//       name: "HURRICANE HS02 SEATED ROW",
+//       berat: "Berat : 86kg / 189lb",
+//       dimensi: "Dimensi: 1450(L)*1010(W)*1650mm(H)",
+//       brand: "HURRICANE"
+//     },
+//     {
+//       image: "./assets/images/product/strength/hurricane/HURRICANE-HS03-SHOULDER-PRESS.svg", 
+//       name: "HURRICANE HS03 SHOULDER PRESS",
+//       berat: "Berat : 86kg / 189lb",
+//       dimensi: "Dimensi: 1600(L)*1430(W)*1650mm(H)",
+//       brand: "DHZ" 
+//     },
+//     {
+//       image: "./assets/images/product/strength/hurricane/HURRICANE-HS06-SEATED-LEG-CURL.svg", 
+//       name: "HURRICANE HS06 SEATED LEG CURL",
+//       berat: "Berat : 104kg / 228lb",
+//       dimensi: "Dimensi: 1315(L)*970(W)*1650mm(H)",
+//       brand: "TRUE" 
+//     }
+//   ],
+//   CARDIO: [
+//     {
+//       image: "./assets/images/product/cardio/hurricane/HURRICANEF6CLIMBINGELLIPTICALMACHINE_910(L)1320(W)1800(H)_108KG.svg",
+//       name: "HURRICANE F6 CLIMBING ELLIPTICAL MACHINE",
+//       berat: "Berat : 108kg / 238lb",
+//       dimensi: "Dimensi: 910(L)*1320(W)*1800(H)",
+//       brand: "HURRICANE"
+//     },
+//     {
+//       image: "./assets/images/product/cardio/hurricane/HURRICANEF6ELLIPTICAL_2200(L)750(W1800(H_200KG.svg",
+//       name: "HURRICANE F6 ELLIPTICAL",
+//       berat: "Berat : 200kg / 440lb",
+//       dimensi: "Dimensi: 2200(L)*750(W)*1800(H)",
+//       brand: "HURRICANE"
+//     },
+//     {
+//       image: "./assets/images/product/cardio/hurricane/HURRICANEF6RECUMBENTBIKE_1770(L)750(W1450(H)_72KG.svg",
+//       name: "HURRICANE F6 RECUMBENT BIKE",
+//       berat: "Berat : 72kg / 158lb",
+//       dimensi: "Dimensi: 1770(L)*750(W)*1450(H)",
+//       brand: "HURRICANE"
+//     },
+//     {
+//       image: "./assets/images/product/cardio/hurricane/HURRICANEF6TREADMILL_220(L)850(W)1510(H)_170KG.svg",
+//       name: "HURRICANE F6 TREADMILL",
+//       berat: "Berat : 170kg / 374lb",
+//       dimensi: "Dimensi: 220(L)*850(W)*1510(H)",
+//       brand: "HURRICANE"
+//     },
+//     {
+//       image: "./assets/images/product/cardio/hurricane/HURRICANEF6UPRIGHTBIKE_1200mm(L)580mm(W)1550mm(H)_72KG.svg.svg",
+//       name: "HURRICANE F6 UPRIGHT BIKE",
+//       berat: "Berat : 72kg / 158lb",
+//       dimensi: "Dimensi: 1200mm(L)*580mm(W)*1550mm(H)",
+//       brand: "HURRICANE"
+//     },
+//   ],
+//   PACKAGES: [ 
+//     {
+//       image: "./assets/images/product/packages/example_package.svg", 
+//       name: "PACKAGE DEAL ALPHA",
+//       berat: "Berat : N/A",
+//       dimensi: "Dimensi: N/A",
+//       brand: "DHZ"
+//     }
+//   ],
+//   "FREE WEIGHT": [ 
+//     {
+//       image: "./assets/images/product/freeweight/example_dumbbell.svg", 
+//       name: "DUMBBELL SET PRO",
+//       berat: "Berat : Various",
+//       dimensi: "Dimensi: Various",
+//       brand: "TRUE"
+//     }
+//   ],
+//   "FLOORING & STORAGE": [ 
+//     {
+//       image: "./assets/images/product/flooring/example_mat.svg", 
+//       name: "GYM FLOORING TILES",
+//       berat: "Berat : N/A",
+//       dimensi: "Dimensi: Per tile",
+//       brand: "HURRICANE"
+//     }
+//   ],
+// };
 
-const productData = {
-  STRENGTH: [
-    {
-      image: "./assets/images/product/strength/hurricane/HURRICANE-HS01-SEATED-CHEST-PRESS.svg",
-      name: "HURRICANE HS01 SEATED CHEST PRESS",
-      berat: "Berat : 68kg / 149lb",
-      dimensi: "Dimensi: 1360(L)*1260(W)*1650mm(H)",
-      brand: "HURRICANE"
-    },
-    {
-      image: "./assets/images/product/strength/hurricane/HURRICANE-HS02-SEATED-ROW.svg",
-      name: "HURRICANE HS02 SEATED ROW",
-      berat: "Berat : 86kg / 189lb",
-      dimensi: "Dimensi: 1450(L)*1010(W)*1650mm(H)",
-      brand: "HURRICANE"
-    },
-    {
-      image: "./assets/images/product/strength/hurricane/HURRICANE-HS03-SHOULDER-PRESS.svg", 
-      name: "HURRICANE HS03 SHOULDER PRESS",
-      berat: "Berat : 86kg / 189lb",
-      dimensi: "Dimensi: 1600(L)*1430(W)*1650mm(H)",
-      brand: "DHZ" 
-    },
-    {
-      image: "./assets/images/product/strength/hurricane/HURRICANE-HS06-SEATED-LEG-CURL.svg", 
-      name: "HURRICANE HS06 SEATED LEG CURL",
-      berat: "Berat : 104kg / 228lb",
-      dimensi: "Dimensi: 1315(L)*970(W)*1650mm(H)",
-      brand: "TRUE" 
-    }
-  ],
-  CARDIO: [
-    {
-      image: "./assets/images/product/cardio/hurricane/HURRICANE-F6-ARTIS-RECUMBENT-BIKE.svg",
-      name: "HURRICANE F6 ARTIS RECUMBENT BIKE",
-      berat: "Berat : 72kg / 159lb",
-      dimensi: "Dimensi: 1770(L)*750(W)*1450(H)",
-      brand: "HURRICANE"
-    },
-    {
-      image: "./assets/images/product/cardio/hurricane/HURRICANE-F6-ARTIS-SPIN-BIKE.svg",
-      name: "HURRICANE F6 ARTIS SPIN BIKE",
-      berat: "Berat : 68kg / 149lb",
-      dimensi: "Dimensi: 1200(L)*580(W)*1550(H)",
-      brand: "TRUE"
-    },
-    {
-      image: "./assets/images/product/cardio/hurricane/HURRICANE-F6-ARTIS-STAIR-CLIMBER.svg",
-      name: "HURRICANE F6 ARTIS STAIR CLIMBER",
-      berat: "Berat : 108kg / 238lb",
-      dimensi: "Dimensi: 910(L)*1320(W)*1800(H)",
-      brand: "HURRICANE"
-    },
-    {
-      image: "./assets/images/product/cardio/hurricane/HURRICANE-F6-ARTIS-TREADMILL.svg",
-      name: "HURRICANE F6 ARTIS TREADMILL",
-      berat: "Berat : 108kg / 238lb",
-      dimensi: "Dimensi: 2200(L)*850(W)*1510(H)",
-      brand: "HURRICANE"
-    }
-  ],
-  PACKAGES: [ 
-    {
-      image: "./assets/images/product/packages/example_package.svg", 
-      name: "PACKAGE DEAL ALPHA",
-      berat: "Berat : N/A",
-      dimensi: "Dimensi: N/A",
-      brand: "DHZ"
-    }
-  ],
-  "FREE WEIGHT": [ 
-    {
-      image: "./assets/images/product/freeweight/example_dumbbell.svg", 
-      name: "DUMBBELL SET PRO",
-      berat: "Berat : Various",
-      dimensi: "Dimensi: Various",
-      brand: "TRUE"
-    }
-  ],
-  "FLOORING & STORAGE": [ 
-    {
-      image: "./assets/images/product/flooring/example_mat.svg", 
-      name: "GYM FLOORING TILES",
-      berat: "Berat : N/A",
-      dimensi: "Dimensi: Per tile",
-      brand: "HURRICANE"
-    }
-  ],
-};
+document.addEventListener('DOMContentLoaded', function() {
+  const slider = document.querySelector('.slider');
+  const btnLeft = document.querySelector('.slider-btn-left');
+  const btnRight = document.querySelector('.slider-btn-right');
+  let currentSlide = 0;
+  const slideCount = document.querySelectorAll('.slide').length;
+
+  // Function to show specific slide
+  function showSlide(slideIndex) {
+    currentSlide = slideIndex;
+    
+    // Reset the animation
+    slider.style.animation = 'none';
+    
+    // Apply transform directly
+    slider.style.transform = `translateX(-${currentSlide * 50}%)`;
+    
+    // Restart animation after moving to manual position
+    setTimeout(() => {
+      slider.style.animation = '';
+      // Set the animation to start from the current position
+      if (currentSlide === 0) {
+        slider.style.animationName = 'slide';
+      } else {
+        // Create a custom animation that starts from the second slide
+        document.styleSheets[0].insertRule(
+          `@keyframes slideFrom1 {
+            0%, 45% {
+              transform: translateX(-50%);
+            }
+            50%, 95% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }`,
+          document.styleSheets[0].cssRules.length
+        );
+        slider.style.animationName = 'slideFrom1';
+      }
+    }, 50);
+  }
+
+  // Navigate to previous slide
+  btnLeft.addEventListener('click', function() {
+    currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+    showSlide(currentSlide);
+  });
+
+  // Navigate to next slide
+  btnRight.addEventListener('click', function() {
+    currentSlide = (currentSlide + 1) % slideCount;
+    showSlide(currentSlide);
+  });
+});
 
 
 const availableBrands = ["ALL", "DHZ", "HURRICANE", "TRUE"]; 
@@ -145,11 +209,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("modalOverlay");
     const modalImage = document.getElementById("modalImage");
     const modalName = document.getElementById("modalName");
-    const modalPrice = document.getElementById("modalPrice");
     const modalDimensi = document.getElementById("modalDimensi");
     const modalBerat = document.getElementById("modalBerat");
 
-    if (!modal || !modalImage || !modalName || !modalPrice || !modalDimensi || !modalBerat) {
+    if (!modal || !modalImage || !modalName || !modalDimensi || !modalBerat) {
         console.error("Satu atau lebih elemen modal tidak ditemukan.");
         return;
     }
@@ -157,7 +220,6 @@ document.addEventListener("DOMContentLoaded", function () {
     modalImage.src = product.image || "./assets/images/placeholder.png";
     modalImage.alt = product.name || 'Gambar Produk';
     modalName.textContent = product.name || 'Nama Produk';
-    modalPrice.textContent = product.price || "Harga tidak tersedia";
     modalDimensi.textContent = product.dimensi || "Dimensi tidak tersedia";
     modalBerat.textContent = product.berat || "Berat tidak tersedia";
 
