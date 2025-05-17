@@ -459,6 +459,7 @@ nav > ul > li > a:hover {
 }
 
 .category-item {
+  font-family: 'FuturaHeavy', sans-serif;
   position: relative;
   cursor: pointer;
   img {
