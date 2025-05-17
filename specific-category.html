@@ -1,593 +1,919 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Katalog Produk Spesifik</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
-  <link rel="manifest" href="assets/favicon/site.webmanifest" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" />
-  </noscript>
-  <link rel="stylesheet" href="styles/reset.css" />
-  <link rel="stylesheet" href="styles/style.css" />
-  <link rel="stylesheet" href="styles/font.css" media="print" onload="this.media='all'" />
-  <link rel="stylesheet" href="styles/utils.css" media="print" onload="this.media='all'" />
-  <style>
-    /* Gaya untuk kategori dan dropdown */
-    .category-container {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    
-    .category-item-wrapper {
-      position: relative;
-      cursor: pointer;
-    }
-    
-    .category-item {
-      color: black;
-      border-radius: 5px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.3s;
-    }
-    
- 
-    
-    .category-item.active {
-      color: var(--color-blue);
-    }
-    
-    .dropdown-icon {
-      transition: transform 0.3s;
-    }
-    
-    .dropdown-icon.open {
-      transform: rotate(180deg);
-    }
-    
-    .brand-dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background-color: #fff;
-      border: 1px solid #e0e0e0;
-      border-radius: 0 0 5px 5px;
-      z-index: 100;
-      display: none;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    
-    .brand-dropdown.show {
-      display: block;
-      min-width: 140px;
-    }
-    
-    .brand-item {
-      padding: 10px 15px;
-      cursor: pointer;
-    }
-    
-    .brand-item:hover {
-      background-color: #f5f5f5;
-    }
-    
-    .brand-item.selected {
-      background-color: #e0f2fe;
-      font-weight: 600;
-    }
- 
-    
-    .current-filter-info {
-      text-align: center;
-      margin: 20px 0;
-      padding: 10px;
-      background-color: #f0f8ff;
-      border-radius: 5px;
-      color: #2c3e50;
-    }
-    
-    /* Media Query untuk Responsif */
-    @media screen and (max-width: 768px) {
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Katalog Produk Spesifik</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      />
+    </noscript>
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="styles/font.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link
+      rel="stylesheet"
+      href="styles/utils.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <style>
+      /* Gaya untuk kategori dan dropdown */
       .category-container {
+        display: flex;
         flex-direction: column;
-        align-items: center;
+        gap: 8px;
       }
-      
+
       .category-item-wrapper {
+        position: relative;
+        cursor: pointer;
+      }
+
+      .category-item {
+        color: black;
+        border-radius: 5px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s;
+      }
+
+      .category-item.active {
+        color: var(--color-blue);
+      }
+
+      .dropdown-icon {
+        transition: transform 0.3s;
+      }
+
+      .dropdown-icon.open {
+        transform: rotate(180deg);
+      }
+
+      .brand-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
         width: 100%;
-        max-width: 300px;
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 0 0 5px 5px;
+        z-index: 100;
+        display: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <nav>
-      <div class="nav-logo-container">
-        <img alt="Logo" src="./assets/images/logo.png" />
-      </div>
-      <button class="nav-toggle" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
-      <ul class="nav-menu">
-        <li><a href="/index.html#about"> ABOUT US </a></li>
-        <li><a href="/index.html#category"> CATEGORY </a></li>
-        <li><a href="/index.html#projects"> PROJECTS </a></li>
-        <li><a href="/index.html#client"> CLIENT </a></li>
-        <li><a href="/index.html#brand"> BRANDS </a></li>
-        <li><a href="/index.html#contact"> CONTACT </a></li>
-      </ul>
-    </nav>
-  </header>
-  
-  <main>
-    <section class="product-section">
-      <div class="product-categories-container">
-        <h2 id="page-main-title">KATEGORI PRODUK</h2>
-        
-        <!-- Kategori dengan dropdown -->
-        <div class="category-container" id="category-container">
-          <!-- Category items will be inserted here by JavaScript -->
-        </div>
-        
-        
-      </div>
-      
-      <div class="product-grid" id="product-grid">
-        <!-- Product cards will be inserted here by JavaScript -->
-      </div>
-    </section>
-  </main>
-  
-  <!-- Modal Overlay -->
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal-content">
-      <span class="modal-close" id="modalClose">×</span>
-      <img id="modalImage" src="" alt="Product" />
-      <div class="modal-content-info">
-        <h3 id="modalName"></h3>
-        <p id="modalPrice"></p>
-        <h3 id="deskripsi-title">Deskripsi</h3>
-        <p id="modalDimensi"></p>
-        <p id="modalBerat"></p>
-      </div>
-    </div>
-  </div>
-  
-  <footer>
-    <div class="left-footer-content">
-      <div class="item-left-footer">
-        <h4>About</h4>
-        <div>
-          <a href="/index.html#about"> About Kawan Gym Asia </a>
-          <a href="/index.html#category"> Category </a>
-          <a href="/index.html#projects"> Projects </a>
-          <a href="/index.html#client"> Client </a>
-          <a href="/index.html#brand"> Brands </a>
-          <a href="/index.html#contact"> Contact </a>
-          <a href="./specific-category.html"> Catalog </a>
-        </div>
-      </div>
-      <div class="item-left-footer">
-        <h4>Visit Us</h4>
-        <div>
-          <a href="https://www.google.com/maps/place/PT.+KAWAN+GYM+ASIA/@-6.2690331,106.372809,12z/data=!4m10!1m2!2m1!1skomplek,+Jl.+Citra+Raya+Boulevard+ruko+Grand+Bulevard+U+No.01A%2F301,+Kabupaten+Tangerang,+Banten+15710!3m6!1s0x2e4207004c9b05eb:0xa40fb7f0697c7704!8m2!3d-6.2690331!4d106.5252443!15sCmVrb21wbGVrLCBKbC4gQ2l0cmEgUmF5YSBCb3VsZXZhcmQgcnVrbyBHcmFuZCBCdWxldmFyZCBVIE5vLjAxQS8zMDEsIEthYnVwYXRlbiBUYW5nZXJhbmcsIEJhbnRlbiAxNTcxMOABAA!16s%2Fg%2F11wwz2cktl?entry=ttu&g_ep=EgoyMDI1MDQyMi4wIKXMDSoASAFQAw%3D%3D">
-            Alamat Kantor
+
+      .brand-dropdown.show {
+        display: block;
+        min-width: 140px;
+      }
+
+      .brand-item {
+        font-family: "FuturaHeavy", sans-serif;
+        padding: 10px 15px;
+        cursor: pointer;
+      }
+
+      .brand-item:hover {
+        background-color: #f5f5f5;
+      }
+
+      .brand-item.selected {
+        background-color: #e0f2fe;
+        font-weight: 600;
+      }
+
+      .current-filter-info {
+        text-align: center;
+        margin: 20px 0;
+        padding: 10px;
+        background-color: #f0f8ff;
+        border-radius: 5px;
+        color: #2c3e50;
+      }
+
+      /* Media Query untuk Responsif */
+      @media screen and (max-width: 768px) {
+        .category-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .category-item-wrapper {
+          width: 100%;
+          max-width: 300px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-logo-container">
+          <a href="index.html">
+            <img alt="Logo" src="./assets/images/logo.png" />
           </a>
         </div>
-      </div>
-      <div class="item-left-footer">
-        <h4>Support</h4>
-        <div>
-          <a href="https://api.whatsapp.com/send/?phone=%2B6281808344123&text&type=phone_number&app_absent=0">
-            Contact Support
-          </a>
-          <a href="https://api.whatsapp.com/send/?phone=%2B6281808344123&text&type=phone_number&app_absent=0">
-            Contact Sales</a>
-        </div>
-      </div>
-    </div>
-    <div class="right-footer-content">
-      <h4>Masukkan Email Anda untuk Mendapatkan Update Terbaru tentang Kita</h4>
-      <form action="https://formsubmit.co/gaweanaldi99@gmail.com" method="POST">
-        <input type="email" placeholder="Your Email" name="Email" />
-        <button>Submit</button>
-      </form>
-      <p>For more information, please contact us at</p>
-      <div class="footer-sosmed-1">
-        <div>
-          <i class="fa-solid fa-phone"></i> <span> +6281808344123 </span>
-        </div>
-      </div>
-      <div class="footer-sosmed-2">
-        <i class="fa-brands fa-whatsapp"></i>
-        <i class="fa-brands fa-facebook"></i>
-        <i class="fa-brands fa-instagram"></i>
-        <i class="fa-brands fa-youtube"></i>
-      </div>
-    </div>
-  </footer>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-menu">
+          <li><a href="/index.html#about"> ABOUT US </a></li>
+          <li><a href="/index.html#category"> CATEGORY </a></li>
+          <li><a href="/index.html#projects"> PROJECTS </a></li>
+          <li><a href="/index.html#client"> CLIENT </a></li>
+          <li><a href="/index.html#brand"> BRANDS </a></li>
+          <li><a href="/index.html#contact"> CONTACT </a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <script>
-    const productData = {
-      STRENGTH: [
-        {
-          image: "./assets/images/product/strength/hurricane/HURRICANE-HS01-SEATED-CHEST-PRESS.svg",
-          name: "HURRICANE HS01 SEATED CHEST PRESS",
-          berat: "Berat : 68kg / 149lb",
-          dimensi: "Dimensi: 1360(L)*1260(W)*1650mm(H)",
-          brand: "HURRICANE"
-        },
-        {
-          image: "./assets/images/product/strength/hurricane/HURRICANE-HS02-SEATED-ROW.svg",
-          name: "HURRICANE HS02 SEATED ROW",
-          berat: "Berat : 86kg / 189lb",
-          dimensi: "Dimensi: 1450(L)*1010(W)*1650mm(H)",
-          brand: "HURRICANE"
-        },
-        {
-          image: "./assets/images/product/strength/hurricane/HURRICANE-HS03-SHOULDER-PRESS.svg", 
-          name: "HURRICANE HS03 SHOULDER PRESS",
-          berat: "Berat : 86kg / 189lb",
-          dimensi: "Dimensi: 1600(L)*1430(W)*1650mm(H)",
-          brand: "DHZ" 
-        },
-        {
-          image: "./assets/images/product/strength/hurricane/HURRICANE-HS06-SEATED-LEG-CURL.svg", 
-          name: "HURRICANE HS06 SEATED LEG CURL",
-          berat: "Berat : 104kg / 228lb",
-          dimensi: "Dimensi: 1315(L)*970(W)*1650mm(H)",
-          brand: "TRUE" 
-        }
-      ],
-      CARDIO: [
-        {
-          image: "./assets/images/product/cardio/hurricane/HURRICANE-F6-ARTIS-RECUMBENT-BIKE.svg",
-          name: "HURRICANE F6 ARTIS RECUMBENT BIKE",
-          berat: "Berat : 72kg / 159lb",
-          dimensi: "Dimensi: 1770(L)*750(W)*1450(H)",
-          brand: "HURRICANE"
-        },
-        {
-          image: "./assets/images/product/cardio/hurricane/HURRICANE-F6-ARTIS-SPIN-BIKE.svg",
-          name: "HURRICANE F6 ARTIS SPIN BIKE",
-          berat: "Berat : 68kg / 149lb",
-          dimensi: "Dimensi: 1200(L)*580(W)*1550(H)",
-          brand: "TRUE"
-        },
-        {
-          image: "./assets/images/product/cardio/hurricane/HURRICANE-F6-ARTIS-STAIR-CLIMBER.svg",
-          name: "HURRICANE F6 ARTIS STAIR CLIMBER",
-          berat: "Berat : 108kg / 238lb",
-          dimensi: "Dimensi: 910(L)*1320(W)*1800(H)",
-          brand: "HURRICANE"
-        },
-        {
-          image: "./assets/images/product/cardio/hurricane/HURRICANE-F6-ARTIS-TREADMILL.svg",
-          name: "HURRICANE F6 ARTIS TREADMILL",
-          berat: "Berat : 108kg / 238lb",
-          dimensi: "Dimensi: 2200(L)*850(W)*1510(H)",
-          brand: "HURRICANE"
-        }
-      ],
-      PACKAGES: [ 
-        {
-          image: "./assets/images/product/packages/example_package.svg", 
-          name: "PACKAGE DEAL ALPHA",
-          berat: "Berat : N/A",
-          dimensi: "Dimensi: N/A",
-          brand: "DHZ"
-        }
-      ],
-      "FREE WEIGHT": [ 
-        {
-          image: "./assets/images/product/freeweight/example_dumbbell.svg", 
-          name: "DUMBBELL SET PRO",
-          berat: "Berat : Various",
-          dimensi: "Dimensi: Various",
-          brand: "TRUE"
-        }
-      ],
-      "FLOORING & STORAGE": [ 
-        {
-          image: "./assets/images/product/flooring/example_mat.svg", 
-          name: "GYM FLOORING TILES",
-          berat: "Berat : N/A",
-          dimensi: "Dimensi: Per tile",
-          brand: "HURRICANE"
-        }
-      ],
-    };
+    <main>
+      <section class="product-section">
+        <div class="product-categories-container">
+          <h2 id="page-main-title">KATEGORI PRODUK</h2>
 
-    const availableBrands = ["ALL", "DHZ", "HURRICANE", "TRUE"];
-    
-    // Variabel untuk melacak status kategori dan brand yang aktif
-    let activeCategory = localStorage.getItem('selectedCategory') || 'STRENGTH';
-    let activeBrand = "ALL";
-    let activeDropdown = null;
-    
-    document.addEventListener("DOMContentLoaded", function() {
-      // Setup navigasi toggle
-      const toggle = document.querySelector(".nav-toggle");
-      const navMenu = document.querySelector(".nav-menu");
-      if (toggle && navMenu) {
-        toggle.addEventListener("click", () => {
-          navMenu.classList.toggle("active");
-        });
-      }
-      
-      // Setup kategori
-      initCategories();
-      
-      // Load produk berdasarkan kategori aktif
-      loadProducts(activeCategory, activeBrand);
-      
-      // Setup modal
-      setupModal();
-    });
-    
-    function initCategories() {
-      const categoryContainer = document.getElementById('category-container');
-      categoryContainer.innerHTML = '';
-      
-      // Membuat elemen kategori untuk setiap kategori yang tersedia
-      Object.keys(productData).forEach(category => {
-        // Periksa apakah kategori ini memiliki produk
-        if (productData[category] && productData[category].length > 0) {
-          // Buat daftar brand yang tersedia untuk kategori ini
-          const brandsInCategory = ['ALL'];
-          const uniqueBrands = new Set();
-          
-          productData[category].forEach(product => {
-            if (product.brand) uniqueBrands.add(product.brand);
-          });
-          
-          uniqueBrands.forEach(brand => brandsInCategory.push(brand));
-          
-          // Buat wrapper kategori
-          const categoryWrapper = document.createElement('div');
-          categoryWrapper.className = 'category-item-wrapper';
-          categoryWrapper.dataset.category = category;
-          
-          // Buat item kategori
-          const categoryItem = document.createElement('div');
-          categoryItem.className = `category-item ${category === activeCategory ? 'active' : ''}`;
-          categoryItem.innerHTML = `
-            ${category}
-            <i class="fas fa-chevron-down dropdown-icon ${category === activeCategory ? 'open' : ''}"></i>
-          `;
-          
-          // Buat dropdown brand untuk kategori ini
-          const brandDropdown = document.createElement('div');
-          brandDropdown.className = `brand-dropdown ${category === activeCategory ? 'show' : ''}`;
-          
-          // Tambahkan item brand ke dropdown
-          brandsInCategory.forEach(brand => {
-            const brandItem = document.createElement('div');
-            brandItem.className = `brand-item ${brand === activeBrand && category === activeCategory ? 'selected' : ''}`;
-            brandItem.textContent = brand === 'ALL' ? 'Semua Merek' : brand;
-            brandItem.dataset.brand = brand;
-            
-            // Event listener untuk item brand
-            brandItem.addEventListener('click', (e) => {
-              e.stopPropagation();
-              activeBrand = brand;
-              
-              // Update tampilan item brand yang dipilih
-              document.querySelectorAll('.brand-item').forEach(item => {
-                item.classList.remove('selected');
-              });
-              brandItem.classList.add('selected');
-              
-              // Load produk dengan filter brand yang dipilih
-              loadProducts(activeCategory, activeBrand);
-              
-              // Update info filter
-              updateFilterInfo();
-            });
-            
-            brandDropdown.appendChild(brandItem);
-          });
-          
-          // Event listener untuk item kategori
-          categoryItem.addEventListener('click', () => {
-            // Toggle dropdown
-            const wasActive = category === activeCategory;
-            
-            // Reset kategori aktif
-            document.querySelectorAll('.category-item').forEach(item => {
-              item.classList.remove('active');
-              item.querySelector('.dropdown-icon').classList.remove('open');
-            });
-            
-            // Tutup semua dropdown lain
-            document.querySelectorAll('.brand-dropdown').forEach(dropdown => {
-              dropdown.classList.remove('show');
-            });
-            
-            // Jika kategori ini sudah aktif dan dropdown terbuka, tutup saja
-            if (wasActive) {
-              // Toggle dropdown
-              brandDropdown.classList.toggle('show');
-              categoryItem.classList.toggle('active');
-              categoryItem.querySelector('.dropdown-icon').classList.toggle('open');
-            } else {
-              // Ubah kategori aktif dan buka dropdown
-              activeCategory = category;
-              activeBrand = "ALL";
-              categoryItem.classList.add('active');
-              categoryItem.querySelector('.dropdown-icon').classList.add('open');
-              brandDropdown.classList.add('show');
-              
-              // Update item brand yang dipilih
-              document.querySelectorAll('.brand-item').forEach(item => {
-                item.classList.remove('selected');
-              });
-              brandDropdown.querySelector('[data-brand="ALL"]').classList.add('selected');
-              
-              // Load produk berdasarkan kategori baru
-              loadProducts(activeCategory, activeBrand);
-              
-              // Update info filter
-              updateFilterInfo();
-              
-              // Simpan kategori yang dipilih di localStorage
-              localStorage.setItem('selectedCategory', activeCategory);
-            }
-          });
-          
-          // Tambahkan ke wrapper dan container
-          categoryWrapper.appendChild(categoryItem);
-          categoryWrapper.appendChild(brandDropdown);
-          categoryContainer.appendChild(categoryWrapper);
-        }
-      });
-      
-      // Update info filter
-      updateFilterInfo();
-      
-      // Tambahkan event listener untuk menutup dropdown saat mengklik di luar
-      document.addEventListener('click', (e) => {
-        const targetElement = e.target;
-        const isDropdown = targetElement.closest('.category-item-wrapper');
-        
-        if (!isDropdown) {
-          document.querySelectorAll('.brand-dropdown').forEach(dropdown => {
-            dropdown.classList.remove('show');
-          });
-          
-          document.querySelectorAll('.dropdown-icon').forEach(icon => {
-            icon.classList.remove('open');
-          });
-        }
-      });
-    }
-    
-    function loadProducts(category, brand = "ALL") {
-      const productGrid = document.getElementById('product-grid');
-      if (!productGrid) {
-        console.error("Elemen product-grid tidak ditemukan.");
-        return;
-      }
-      
-      productGrid.innerHTML = "";
-      
-      // Ambil produk dalam kategori
-      const productsInCategory = productData[category] || [];
-      let productsToDisplay = productsInCategory;
-      
-      if (brand !== "ALL") {
-        productsToDisplay = productsInCategory.filter(product => 
-          product.brand && product.brand.toUpperCase() === brand.toUpperCase()
-        );
-      }
-      
-      // Tampilkan pesan jika tidak ada produk
-      if (productsToDisplay.length === 0) {
-        const categoryNameDisplay = category || 'yang dipilih';
-        productGrid.innerHTML = `
-          <p style="grid-column: 1 / -1; text-align: center; padding: 20px;">
-            Tidak ada produk untuk kategori '${categoryNameDisplay}'${brand !== "ALL" ? ` dan merek '${brand}'` : ''}.
-          </p>
-        `;
-        return;
-      }
-      
-      // Tampilkan produk
-      productsToDisplay.forEach(product => {
-        const productCard = document.createElement("div");
-        productCard.className = "product-card";
-        productCard.innerHTML = `
-          <img src="${product.image || './assets/images/placeholder.png'}" 
-               alt="${product.name || 'Nama Produk'}" 
-               onerror="this.onerror=null;this.src='./assets/images/placeholder.png';">
-          <div class="product-info">
-            <h3>${product.name || 'Nama Produk'}</h3>
+          <!-- Kategori dengan dropdown -->
+          <div class="category-container" id="category-container">
+            <!-- Category items will be inserted here by JavaScript -->
           </div>
-        `;
-        
-        productCard.addEventListener("click", () => showModal(product));
-        productGrid.appendChild(productCard);
-      });
-    }
-    
-    function updateFilterInfo() {
-      const filterInfo = document.getElementById('current-filter-info');
-      if (filterInfo) {
-        let infoText = `Menampilkan produk kategori <strong>${activeCategory}</strong>`;
-        if (activeBrand !== "ALL") {
-          infoText += ` dari merek <strong>${activeBrand}</strong>`;
+        </div>
+
+        <div class="product-grid" id="product-grid">
+          <!-- Product cards will be inserted here by JavaScript -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-content">
+        <span class="modal-close" id="modalClose">×</span>
+        <img id="modalImage" src="" alt="Product" />
+        <div class="modal-content-info">
+          <h3 id="modalName"></h3>
+          <h3 id="deskripsi-title">Deskripsi</h3>
+          <p id="modalDimensi"></p>
+          <p id="modalBerat"></p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="left-footer-content">
+        <div class="item-left-footer">
+          <h4>About</h4>
+          <div>
+            <a href="/index.html#about"> About Kawan Gym Asia </a>
+            <a href="/index.html#category"> Category </a>
+            <a href="/index.html#projects"> Projects </a>
+            <a href="/index.html#client"> Client </a>
+            <a href="/index.html#brand"> Brands </a>
+            <a href="/index.html#contact"> Contact </a>
+            <a href="./specific-category.html"> Catalog </a>
+          </div>
+        </div>
+        <div class="item-left-footer">
+          <h4>Visit Us</h4>
+          <div>
+            <a
+              href="https://www.google.com/maps/place/PT.+KAWAN+GYM+ASIA/@-6.2690331,106.372809,12z/data=!4m10!1m2!2m1!1skomplek,+Jl.+Citra+Raya+Boulevard+ruko+Grand+Bulevard+U+No.01A%2F301,+Kabupaten+Tangerang,+Banten+15710!3m6!1s0x2e4207004c9b05eb:0xa40fb7f0697c7704!8m2!3d-6.2690331!4d106.5252443!15sCmVrb21wbGVrLCBKbC4gQ2l0cmEgUmF5YSBCb3VsZXZhcmQgcnVrbyBHcmFuZCBCdWxldmFyZCBVIE5vLjAxQS8zMDEsIEthYnVwYXRlbiBUYW5nZXJhbmcsIEJhbnRlbiAxNTcxMOABAA!16s%2Fg%2F11wwz2cktl?entry=ttu&g_ep=EgoyMDI1MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+            >
+              Alamat Kantor
+            </a>
+          </div>
+        </div>
+        <div class="item-left-footer">
+          <h4>Support</h4>
+          <div>
+            <a
+              href="https://api.whatsapp.com/send/?phone=%2B6281808344123&text&type=phone_number&app_absent=0"
+            >
+              Contact Support
+            </a>
+            <a
+              href="https://api.whatsapp.com/send/?phone=%2B6281808344123&text&type=phone_number&app_absent=0"
+            >
+              Contact Sales</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="right-footer-content">
+        <h4>
+          Masukkan Email Anda untuk Mendapatkan Update Terbaru tentang Kita
+        </h4>
+        <form
+          action="https://formsubmit.co/gaweanaldi99@gmail.com"
+          method="POST"
+        >
+          <input type="email" placeholder="Your Email" name="Email" />
+          <button>Submit</button>
+        </form>
+        <p>For more information, please contact us at</p>
+        <div class="footer-sosmed-1">
+          <div>
+            <i class="fa-solid fa-phone"></i> <span> +6281808344123 </span>
+          </div>
+        </div>
+        <div class="footer-sosmed-2">
+          <i class="fa-brands fa-whatsapp"></i>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-youtube"></i>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const productData = {
+        STRENGTH: [
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANEABDOMINAL&BACKEXTENSION_1314(L)1199(W)1580(H)_178KG.svg",
+            name: "HURRICANE ABDOMINAL & BACK EXTENSION",
+            berat: "Berat : 178kg / 392lb",
+            dimensi: "Dimensi: 1314(L)*1199(W)*1580(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANEABDOMINAL_900(L)1210(W)1500(H)_216KG.svg",
+            name: "HURRICANE ABDOMINAL",
+            berat: "Berat : 216kg / 475lb",
+            dimensi: "Dimensi: 900(L)*1210(W)*1500(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANEBACKEXTENSION_1223(L)1219(W)1500(H)_219KGHURRICANEBACKEXTENSION_1223(L)1219(W)1500(H)_219KG.svg",
+            name: "HURRICANE BACK EXTENSION",
+            berat: "Berat : 219kg / 482lb",
+            dimensi: "Dimensi: 1223(L)*1219(W)*1500(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANEBICEPSCURL&TRICEPSEXTENSION_1239(L)1305(W)1580(H)_199KG.svg",
+            name: "HURRICANE BICEPS CURL & TRICEPS EXTENSION",
+            berat: "Berat : 199kg / 438lb",
+            dimensi: "Dimensi: 1239(L)*1305(W)*1580(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANEBICEPSCURL_1255(L)1085(W)1500(H)_168KG.svg",
+            name: "HURRICANE BICEPS CURL",
+            berat: "Berat : 168kg / 370lb",
+            dimensi: "Dimensi: 1255(L)*1085(W)*1500(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANECHESTPRESS&SHOULDERPRESS_1985(L)1350(W)1676(H)_236KG.svg",
+            name: "HURRICANE CHEST PRESS & SHOULDER PRESS",
+            berat: "Berat : 236kg / 519lb",
+            dimensi: "Dimensi: 1985(L)*1350(W)*1676(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANEDELTOIDTRAINER_1530(L)710(W)1567(H)_179KG.svg",
+            name: "HURRICANE DELTOID TRAINER",
+            berat: "Berat : 179kg / 394lb",
+            dimensi: "Dimensi: 1530(L)*710(W)*1567(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANEDIP&CHINASSIST_1238(L)1187(W)2236(H)_228KG.svg",
+            name: "HURRICANE DIP & CHIN ASSIST",
+            berat: "Berat : 228kg / 502lb",
+            dimensi: "Dimensi: 1238(L)*1187(W)*2236(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANEHIGH&LOW_712(L)1450(W)2110(H)_170KG.svg",
+            name: "HURRICANE HIGH & LOW",
+            berat: "Berat : 170kg / 374lb",
+            dimensi: "Dimensi: 712(L)*1450(W)*2110(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANEHIPABDUCTION&ADDUCTION_1617(L)677(W)1500(H)_208KG.svg",
+            name: "HURRICANE HIP ABDUCTION & ADDUCTION",
+            berat: "Berat : 208kg / 458lb",
+            dimensi: "Dimensi: 1617(L)*677(W)*1500(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANEHIPTHRUSTMACHINE_1725(L)1278(W)1500(H)_212KG.svg",
+            name: "HURRICANE HIP THRUST MACHINE",
+            berat: "Berat : 212kg / 467lb",
+            dimensi: "Dimensi: 1725(L)*1278(W)*1500(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANEHIPTRAINER_2160(L)1000(W)1500(H)_182KG.svg",
+            name: "HURRICANE HIP TRAINER",
+            berat: "Berat : 182kg / 400lb",
+            dimensi: "Dimensi: 2160(L)*1000(W)*1500(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANELATPULLDOWN_1475((L)1213(W)2303(H)_276KG.svg",
+            name: "HURRICANE LAT PULLDOWN",
+            berat: "Berat : 276kg / 608lb",
+            dimensi: "Dimensi: 1475(L)*1213(W)*2303(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANELEGEXTENSION&LEGCURL_1407(L)1249(W)1496(H)_237KG.svg",
+            name: "HURRICANE LEG EXTENSION & LEG CURL",
+            berat: "Berat : 237kg / 522lb",
+            dimensi: "Dimensi: 1407(L)*1249(W)*1496(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANELEGEXTENSION_1475(L)1260(W)1500(H)_228KG.svg",
+            name: "HURRICANE LEG EXTENSION",
+            berat: "Berat : 228kg / 502lb",
+            dimensi: "Dimensi: 1475(L)*1260(W)*1500(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANELEGPRESS&CALFEXTENSION_1940(L)1135(W)1580(H)_228KG.svg",
+            name: "HURRICANE LEG PRESS & CALF EXTENSION",
+            berat: "Berat : 228kg / 502lb",
+            dimensi: "Dimensi: 1940(L)*1135(W)*1580(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANELOWROW_1480(L)1020(W)1853(H)_218KG.svg",
+            name: "HURRICANE LOW ROW",
+            berat: "Berat : 218kg / 480lb",
+            dimensi: "Dimensi: 1480(L)*1020(W)*1853(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANEPECFLY&REARDELT_1451((L)1463(W)1985(H)_289KG.svg",
+            name: "HURRICANE PEC FLY & REAR DELT",
+            berat: "Berat : 289kg / 637lb",
+            dimensi: "Dimensi: 1451(L)*1463(W)*1985(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANEPRONELEGCURL_1725(L)1278(W)1500(H)_212KG.svg",
+            name: "HURRICANE PRONE LEG CURL",
+            berat: "Berat : 212kg / 467lb",
+            dimensi: "Dimensi: 1725(L)*1278(W)*1500(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANEPULLDOWN&SEATEDROW_1808(L)1213(W)2270(H)_261KG.svg",
+            name: "HURRICANE PULLDOWN & SEATED ROW",
+            berat: "Berat : 261kg / 575lb",
+            dimensi: "Dimensi: 1808(L)*1213(W)*2270(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANEROTARYHIP_1606(L)1403(W)990(H)_203KG.svg",
+            name: "HURRICANE ROTARY HIP",
+            berat: "Berat : 203kg / 448lb",
+            dimensi: "Dimensi: 1606(L)*1403(W)*990(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANESEATEDCHESSPRESS_1555(L)985(W)1815(H)_182KG.svg",
+            name: "HURRICANE SEATED CHEST PRESS",
+            berat: "Berat : 182kg / 400lb",
+            dimensi: "Dimensi: 1555(L)*985(W)*1815(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANESEATEDLEGCURL_1455(L)1265(W)1500(H)_238KG.svg",
+            name: "HURRICANE SEATED LEG CURL",
+            berat: "Berat : 238kg / 524lb",
+            dimensi: "Dimensi: 1455(L)*1265(W)*1500(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANESEATEDLEGPRESS_1864(L)1184(W)1500(H)_346KG.svg",
+            name: "HURRICANE SEATED LEG PRESS",
+            berat: "Berat : 346kg / 763lb",
+            dimensi: "Dimensi: 1864(L)*1184(W)*1500(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANESEATEDROW_1590(L)1115(W)1500(H)_196KG.svg",
+            name: "HURRICANE SEATED ROW",
+            berat: "Berat : 196kg / 432lb",
+            dimensi: "Dimensi: 1590(L)*1115(W)*1500(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANESHOULDERLIFTTRAINER_1220(L)825(W)1500(H)_178KG.svg",
+            name: "HURRICANE SHOULDER LIFT TRAINER",
+            berat: "Berat : 178kg / 392lb",
+            dimensi: "Dimensi: 1220(L)*825(W)*1500(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANESHOULDERPRESS_1707(L)1459(W)1500(H)_203KG.svg",
+            name: "HURRICANE SHOULDER PRESS",
+            berat: "Berat : 203kg / 448lb",
+            dimensi: "Dimensi: 1707(L)*1459(W)*1500(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANESTANDINGBICEPS&TRICEPS_709(L)1492W)2104(H)_165KG.svg",
+            name: "HURRICANE STANDING BICEPS & TRICEPS",
+            berat: "Berat : 165kg / 364lb",
+            dimensi: "Dimensi: 709(L)*1492(W)*2104(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANESTANDINGCALFEXTENSION_1054(L)955(W)1656(H)_218KG.svg",
+            name: "HURRICANE STANDING CALF EXTENSION",
+            berat: "Berat : 218kg / 480lb",
+            dimensi: "Dimensi: 1054(L)*955(W)*1656(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANESTANDINGCALFEXTENSION_1332(L)1170(W)1513(H)_267KG.svg",
+            name: "HURRICANE STANDING CALF EXTENSION",
+            berat: "Berat : 267kg / 589lb",
+            dimensi: "Dimensi: 1332(L)*1170(W)*1513(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANETORSOROTATION_1215(L)825(W)1500(H)_178KG.svg",
+            name: "HURRICANE TORSO ROTATION",
+            berat: "Berat : 178kg / 392lb",
+            dimensi: "Dimensi: 1215(L)*825(W)*1500(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANETRICEPSEXTENSION_1245(L)1020(W)1500(H)_178KG.svg",
+            name: "HURRICANE TRICEPS EXTENSION",
+            berat: "Berat : 178kg / 392lb",
+            dimensi: "Dimensi: 1245(L)*1020(W)*1500(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/strength/hurricane/HURRICANEWAISTTWIST_1325(L)710(W)1500(H)_210KG.svg",
+            name: "HURRICANE WAIST TWIST",
+            berat: "Berat : 210kg / 462lb",
+            dimensi: "Dimensi: 1325(L)*710(W)*1500(H)",
+            brand: "HURRICANE",
+          },
+
+        ],
+        CARDIO: [
+          {
+            image:
+              "./assets/images/product/cardio/hurricane/HURRICANEF6CLIMBINGELLIPTICALMACHINE_910(L)1320(W)1800(H)_108KG.svg",
+            name: "HURRICANE F6 CLIMBING ELLIPTICAL MACHINE",
+            berat: "Berat : 108kg / 238lb",
+            dimensi: "Dimensi: 910(L)*1320(W)*1800(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/cardio/hurricane/HURRICANEF6ELLIPTICAL_2200(L)750(W1800(H_200KG.svg",
+            name: "HURRICANE F6 ELLIPTICAL",
+            berat: "Berat : 200kg / 440lb",
+            dimensi: "Dimensi: 2200(L)*750(W)*1800(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/cardio/hurricane/HURRICANEF6RECUMBENTBIKE_1770(L)750(W1450(H)_72KG.svg",
+            name: "HURRICANE F6 RECUMBENT BIKE",
+            berat: "Berat : 72kg / 158lb",
+            dimensi: "Dimensi: 1770(L)*750(W)*1450(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/cardio/hurricane/HURRICANEF6TREADMILL_220(L)850(W)1510(H)_170KG.svg",
+            name: "HURRICANE F6 TREADMILL",
+            berat: "Berat : 170kg / 374lb",
+            dimensi: "Dimensi: 220(L)*850(W)*1510(H)",
+            brand: "HURRICANE",
+          },
+          {
+            image:
+              "./assets/images/product/cardio/hurricane/HURRICANEF6UPRIGHTBIKE_1200mm(L)580mm(W)1550mm(H)_72KG.svg",
+            name: "HURRICANE F6 UPRIGHT BIKE",
+            berat: "Berat : 72kg / 158lb",
+            dimensi: "Dimensi: 1200mm(L)*580mm(W)*1550mm(H)",
+            brand: "HURRICANE",
+          },
+        ],
+        PACKAGES: [
+          {
+            image: "./assets/images/product/packages/example_package.svg",
+            name: "PACKAGE DEAL ALPHA",
+            berat: "Berat : N/A",
+            dimensi: "Dimensi: N/A",
+            brand: "DHZ",
+          },
+        ],
+        "FREE WEIGHT": [
+          {
+            image: "./assets/images/product/freeweight/example_dumbbell.svg",
+            name: "DUMBBELL SET PRO",
+            berat: "Berat : Various",
+            dimensi: "Dimensi: Various",
+            brand: "TRUE",
+          },
+        ],
+        "FLOORING & STORAGE": [
+          {
+            image: "./assets/images/product/flooring/example_mat.svg",
+            name: "GYM FLOORING TILES",
+            berat: "Berat : N/A",
+            dimensi: "Dimensi: Per tile",
+            brand: "HURRICANE",
+          },
+        ],
+      };
+
+      const availableBrands = ["ALL", "DHZ", "HURRICANE", "TRUE"];
+
+      // Variabel untuk melacak status kategori dan brand yang aktif
+      let activeCategory =
+        localStorage.getItem("selectedCategory") || "STRENGTH";
+      let activeBrand = "ALL";
+      let activeDropdown = null;
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Setup navigasi toggle
+        const toggle = document.querySelector(".nav-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+        if (toggle && navMenu) {
+          toggle.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+          });
         }
-        filterInfo.innerHTML = infoText;
-      }
-      
-      
-    }
-    
-    function showModal(product) {
-      const modal = document.getElementById("modalOverlay");
-      const modalImage = document.getElementById("modalImage");
-      const modalName = document.getElementById("modalName");
-      const modalPrice = document.getElementById("modalPrice");
-      const modalDimensi = document.getElementById("modalDimensi");
-      const modalBerat = document.getElementById("modalBerat");
-      
-      if (!modal || !modalImage || !modalName || !modalPrice || !modalDimensi || !modalBerat) {
-        console.error("Satu atau lebih elemen modal tidak ditemukan.");
-        return;
-      }
-      
-      modalImage.src = product.image || "./assets/images/placeholder.png";
-      modalImage.alt = product.name || 'Gambar Produk';
-      modalName.textContent = product.name || 'Nama Produk';
-      modalPrice.textContent = product.price || "Harga tidak tersedia";
-      modalDimensi.textContent = product.dimensi || "Dimensi tidak tersedia";
-      modalBerat.textContent = product.berat || "Berat tidak tersedia";
-      
-      modal.style.display = "flex";
-      requestAnimationFrame(() => {
-        modal.classList.add("show");
+
+        // Setup kategori
+        initCategories();
+
+        // Load produk berdasarkan kategori aktif
+        loadProducts(activeCategory, activeBrand);
+
+        // Setup modal
+        setupModal();
       });
-    }
-    
-    function setupModal() {
-      const modalCloseButton = document.getElementById("modalClose");
-      const modalOverlay = document.getElementById("modalOverlay");
-      
-      if (modalCloseButton) {
-        modalCloseButton.addEventListener("click", hideModal);
-      }
-      
-      if (modalOverlay) {
-        modalOverlay.addEventListener("click", (e) => {
-          if (e.target.id === "modalOverlay") {
-            hideModal();
+
+      function initCategories() {
+        const categoryContainer = document.getElementById("category-container");
+        categoryContainer.innerHTML = "";
+
+        // Membuat elemen kategori untuk setiap kategori yang tersedia
+        Object.keys(productData).forEach((category) => {
+          // Periksa apakah kategori ini memiliki produk
+          if (productData[category] && productData[category].length > 0) {
+            // Buat daftar brand yang tersedia untuk kategori ini
+            const brandsInCategory = ["ALL"];
+            const uniqueBrands = new Set();
+
+            productData[category].forEach((product) => {
+              if (product.brand) uniqueBrands.add(product.brand);
+            });
+
+            uniqueBrands.forEach((brand) => brandsInCategory.push(brand));
+
+            // Buat wrapper kategori
+            const categoryWrapper = document.createElement("div");
+            categoryWrapper.className = "category-item-wrapper";
+            categoryWrapper.dataset.category = category;
+
+            // Buat item kategori
+            const categoryItem = document.createElement("div");
+            categoryItem.className = `category-item ${
+              category === activeCategory ? "active" : ""
+            }`;
+            categoryItem.innerHTML = `
+            ${category}
+            <i class="fas fa-chevron-down dropdown-icon ${
+              category === activeCategory ? "open" : ""
+            }"></i>
+          `;
+
+            // Buat dropdown brand untuk kategori ini
+            const brandDropdown = document.createElement("div");
+            brandDropdown.className = `brand-dropdown ${
+              category === activeCategory ? "show" : ""
+            }`;
+
+            // Tambahkan item brand ke dropdown
+            brandsInCategory.forEach((brand) => {
+              const brandItem = document.createElement("div");
+              brandItem.className = `brand-item ${
+                brand === activeBrand && category === activeCategory
+                  ? "selected"
+                  : ""
+              }`;
+              brandItem.textContent = brand === "ALL" ? "Semua Merek" : brand;
+              brandItem.dataset.brand = brand;
+
+              // Event listener untuk item brand
+              brandItem.addEventListener("click", (e) => {
+                e.stopPropagation();
+                activeBrand = brand;
+
+                // Update tampilan item brand yang dipilih
+                document.querySelectorAll(".brand-item").forEach((item) => {
+                  item.classList.remove("selected");
+                });
+                brandItem.classList.add("selected");
+
+                // Load produk dengan filter brand yang dipilih
+                loadProducts(activeCategory, activeBrand);
+
+                // Update info filter
+                updateFilterInfo();
+              });
+
+              brandDropdown.appendChild(brandItem);
+            });
+
+            // Event listener untuk item kategori
+            categoryItem.addEventListener("click", () => {
+              // Toggle dropdown
+              const wasActive = category === activeCategory;
+
+              // Reset kategori aktif
+              document.querySelectorAll(".category-item").forEach((item) => {
+                item.classList.remove("active");
+                item.querySelector(".dropdown-icon").classList.remove("open");
+              });
+
+              // Tutup semua dropdown lain
+              document
+                .querySelectorAll(".brand-dropdown")
+                .forEach((dropdown) => {
+                  dropdown.classList.remove("show");
+                });
+
+              // Jika kategori ini sudah aktif dan dropdown terbuka, tutup saja
+              if (wasActive) {
+                // Toggle dropdown
+                brandDropdown.classList.toggle("show");
+                categoryItem.classList.toggle("active");
+                categoryItem
+                  .querySelector(".dropdown-icon")
+                  .classList.toggle("open");
+              } else {
+                // Ubah kategori aktif dan buka dropdown
+                activeCategory = category;
+                activeBrand = "ALL";
+                categoryItem.classList.add("active");
+                categoryItem
+                  .querySelector(".dropdown-icon")
+                  .classList.add("open");
+                brandDropdown.classList.add("show");
+
+                // Update item brand yang dipilih
+                document.querySelectorAll(".brand-item").forEach((item) => {
+                  item.classList.remove("selected");
+                });
+                brandDropdown
+                  .querySelector('[data-brand="ALL"]')
+                  .classList.add("selected");
+
+                // Load produk berdasarkan kategori baru
+                loadProducts(activeCategory, activeBrand);
+
+                // Update info filter
+                updateFilterInfo();
+
+                // Simpan kategori yang dipilih di localStorage
+                localStorage.setItem("selectedCategory", activeCategory);
+              }
+            });
+
+            // Tambahkan ke wrapper dan container
+            categoryWrapper.appendChild(categoryItem);
+            categoryWrapper.appendChild(brandDropdown);
+            categoryContainer.appendChild(categoryWrapper);
+          }
+        });
+
+        // Update info filter
+        updateFilterInfo();
+
+        // Tambahkan event listener untuk menutup dropdown saat mengklik di luar
+        document.addEventListener("click", (e) => {
+          const targetElement = e.target;
+          const isDropdown = targetElement.closest(".category-item-wrapper");
+
+          if (!isDropdown) {
+            document.querySelectorAll(".brand-dropdown").forEach((dropdown) => {
+              dropdown.classList.remove("show");
+            });
+
+            document.querySelectorAll(".dropdown-icon").forEach((icon) => {
+              icon.classList.remove("open");
+            });
           }
         });
       }
-    }
-    
-    function hideModal() {
-      const modal = document.getElementById("modalOverlay");
-      if (modal) {
-        modal.classList.remove("show");
-        setTimeout(() => {
-          modal.style.display = "none";
-        }, 300);
+
+      function loadProducts(category, brand = "ALL") {
+        const productGrid = document.getElementById("product-grid");
+        if (!productGrid) {
+          console.error("Elemen product-grid tidak ditemukan.");
+          return;
+        }
+
+        productGrid.innerHTML = "";
+
+        // Ambil produk dalam kategori
+        const productsInCategory = productData[category] || [];
+        let productsToDisplay = productsInCategory;
+
+        if (brand !== "ALL") {
+          productsToDisplay = productsInCategory.filter(
+            (product) =>
+              product.brand &&
+              product.brand.toUpperCase() === brand.toUpperCase()
+          );
+        }
+
+        // Tampilkan pesan jika tidak ada produk
+        if (productsToDisplay.length === 0) {
+          const categoryNameDisplay = category || "yang dipilih";
+          productGrid.innerHTML = `
+          <p style="grid-column: 1 / -1; text-align: center; padding: 20px;">
+            Tidak ada produk untuk kategori '${categoryNameDisplay}'${
+            brand !== "ALL" ? ` dan merek '${brand}'` : ""
+          }.
+          </p>
+        `;
+          return;
+        }
+
+        // Tampilkan produk
+        productsToDisplay.forEach((product) => {
+          const productCard = document.createElement("div");
+          productCard.className = "product-card";
+          productCard.innerHTML = `
+          <img src="${product.image || "./assets/images/placeholder.png"}" 
+               alt="${product.name || "Nama Produk"}" 
+               onerror="this.onerror=null;this.src='./assets/images/placeholder.png';">
+          <div class="product-info">
+            <h3>${product.name || "Nama Produk"}</h3>
+          </div>
+        `;
+
+          productCard.addEventListener("click", () => showModal(product));
+          productGrid.appendChild(productCard);
+        });
       }
-    }
-  </script>
-</body>
+
+      function updateFilterInfo() {
+        const filterInfo = document.getElementById("current-filter-info");
+        if (filterInfo) {
+          let infoText = `Menampilkan produk kategori <strong>${activeCategory}</strong>`;
+          if (activeBrand !== "ALL") {
+            infoText += ` dari merek <strong>${activeBrand}</strong>`;
+          }
+          filterInfo.innerHTML = infoText;
+        }
+      }
+
+      function showModal(product) {
+        const modal = document.getElementById("modalOverlay");
+        const modalImage = document.getElementById("modalImage");
+        const modalName = document.getElementById("modalName");
+        const modalDimensi = document.getElementById("modalDimensi");
+        const modalBerat = document.getElementById("modalBerat");
+
+        if (
+          !modal ||
+          !modalImage ||
+          !modalName ||
+          !modalDimensi ||
+          !modalBerat
+        ) {
+          console.error("Satu atau lebih elemen modal tidak ditemukan.");
+          return;
+        }
+
+        modalImage.src = product.image || "./assets/images/placeholder.png";
+        modalImage.alt = product.name || "Gambar Produk";
+        modalName.textContent = product.name || "Nama Produk";
+        modalDimensi.textContent = product.dimensi || "Dimensi tidak tersedia";
+        modalBerat.textContent = product.berat || "Berat tidak tersedia";
+
+        modal.style.display = "flex";
+        requestAnimationFrame(() => {
+          modal.classList.add("show");
+        });
+      }
+
+      function setupModal() {
+        const modalCloseButton = document.getElementById("modalClose");
+        const modalOverlay = document.getElementById("modalOverlay");
+
+        if (modalCloseButton) {
+          modalCloseButton.addEventListener("click", hideModal);
+        }
+
+        if (modalOverlay) {
+          modalOverlay.addEventListener("click", (e) => {
+            if (e.target.id === "modalOverlay") {
+              hideModal();
+            }
+          });
+        }
+      }
+
+      function hideModal() {
+        const modal = document.getElementById("modalOverlay");
+        if (modal) {
+          modal.classList.remove("show");
+          setTimeout(() => {
+            modal.style.display = "none";
+          }, 300);
+        }
+      }
+    </script>
+  </body>
 </html>
